@@ -1,12 +1,16 @@
 import { Task } from "../type/task.ts";
+import * as fs from 'node:fs';
 
 export class TaskRepository {
     public tasks : Task[] = []
+    private json_file : string = 'tasks.json'
 
     public create_task(task: Task): void {
         this.tasks.push(task)
         console.log('--------------------------')
         console.log("Tache ajouter avec succes")
+
+        this.save_to_json()
     }
 
     public read_all_task(): void {
@@ -26,6 +30,12 @@ export class TaskRepository {
 
     public get_task_lenght(): number {
         return this.tasks.length
+    }
+
+    public save_to_json() {
+        fs.writeFile(this.json_file, JSON.stringify(this.tasks), 'utf8', () => {
+            console.log('Sauvegarde réussie')
+        })
     }
 
 }

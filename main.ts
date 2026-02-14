@@ -1,6 +1,6 @@
 import { TaskRepository } from "./repository/task_repository.ts";
 
-var task_repository : TaskRepository = new TaskRepository();
+const task_repository : TaskRepository = new TaskRepository();
 
 console.log('Bienvenue sur ToDo App')
 console.log('Version 1.0.0')
@@ -15,7 +15,7 @@ function go_menu() {
     console.log('3 | Completer une de vos taches')
 
 
-    var input = prompt('Choisir votre option')
+    const input = prompt('Choisir votre option')
 
     switch (input) {
         case "1":
@@ -53,7 +53,7 @@ function go_read_all_task() {
 
     task_repository.read_all_task()
 
-    var input = prompt("Retour au menu (appuyez sur ENTREE)")
+    const input = prompt("Retour au menu (appuyez sur ENTREE)")
 
     go_menu()
 }
