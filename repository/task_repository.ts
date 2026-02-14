@@ -33,8 +33,12 @@ export class TaskRepository {
     }
 
     public save_to_json() {
-        fs.writeFile(this.json_file, JSON.stringify(this.tasks), 'utf8', () => {
-            console.log('Sauvegarde réussie')
+        fs.writeFile(this.json_file, JSON.stringify(this.tasks), 'utf8', (err) => {
+            if (err) {
+                console.error('Error writing to file', err);
+            } else {
+                console.log('Data written to file');
+             }
         })
     }
 
